@@ -22,14 +22,29 @@ describe('new route', () => {
   });
 
   it('returns an error if an invalid title is provided', async () => {
-    const response = await request(app).get('/api/tickets');
+    await request(app)
+      .post('/api/tickets')
+      .set('Cookie', signin())
+      .send({
+        title: 'title',
+        price: -10,
+      })
+      .expect(400);
+
+    return request(app)
+      .post('/api/tickets')
+      .set('Cookie', signin())
+      .send({
+        title: 'title',
+      })
+      .expect(400);
   });
 
   it('returns an error if an invalid price is provided', async () => {
-    const response = await request(app).get('/api/tickets');
+    const response = await request(app).post('/api/tickets');
   });
 
   it('creates a ticket with valid inputs', async () => {
-    const response = await request(app).get('/api/tickets');
+    const response = await request(app).post('/api/tickets');
   });
 });
