@@ -8,14 +8,14 @@ const start = async () => {
   }
 
   try {
-    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+    await mongoose.connect('mongodb://tickets-mongo-srv:27017/tickets');
   } catch (err) {
     console.error(err);
   }
 
   const PORT = 3000;
   app.listen(PORT, () => {
-    console.log(`auth service is running on port: ${PORT}`);
+    console.log(`tickets service is running on port: ${PORT}`);
   });
 };
 
