@@ -1,0 +1,3 @@
+- `common` directory is a shared common package which is registered and published on `npm`. 
+- As `common` is also a git repo, it will not be traced and become empty here. 
+- It is registered and published on [https://www.npmjs.com/package/@gittix-ticketing/common](https://www.npmjs.com/package/@gittix-ticketing/common)
