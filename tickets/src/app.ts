@@ -4,6 +4,8 @@ import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 import { errorHandler, NotFoundError } from '@gittix-ticketing/common';
 
+import { createTicketRouter } from './routes/new';
+
 const app = express();
 app.set('trust proxy', true); // trust ingress service from nginx
 app.use(json());
@@ -13,6 +15,8 @@ app.use(
     secure: process.env.NODE_ENV !== 'test',
   })
 );
+
+app.use(createTicketRouter);
 
 app.get('*', async () => {
   throw new NotFoundError();
